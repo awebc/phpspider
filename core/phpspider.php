@@ -2139,6 +2139,13 @@ class phpspider
                 {
                     $values = $this->get_fields_regex($html, $conf['selector'], $conf['name']);
                 }
+                //add other select_type by yunsong at 2018-10-10
+                elseif ($conf['selector_type']=='callback') {
+                    $values = call_user_func($conf['selector']);
+                }
+                elseif ($conf['selector_type']=='defined') {
+                    $values = $conf['selector'];
+                }
 
                 // field不为空而且存在子配置
                 if (isset($values) && !empty($conf['children'])) 

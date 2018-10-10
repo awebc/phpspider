@@ -15,6 +15,8 @@
 
 namespace phpspider\core;
 
+use Exception;
+
 class db
 {
     private static $configs = array();
