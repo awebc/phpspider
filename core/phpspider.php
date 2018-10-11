@@ -2141,7 +2141,7 @@ class phpspider
                 }
                 //add other select_type by yunsong at 2018-10-10
                 elseif ($conf['selector_type']=='callback') {
-                    $values = call_user_func($conf['selector']);
+                    $values = call_user_func($conf['selector'],$this,$page);
                 }
                 elseif ($conf['selector_type']=='defined') {
                     $values = $conf['selector'];
@@ -2179,7 +2179,9 @@ class phpspider
                 // 如果值为空而且值设置为必须项, 跳出foreach循环
                 if ($required) 
                 {
-                    log::warn("Selector {$conf['name']}[{$conf['selector']}] not found, It's a must");
+                    //add by yunsong 20181011
+                    $selector = $conf['selector_type']=='callback' ? 'callback':$conf['selector'];
+                    log::debug("Selector {$conf['name']}[{$selector}] not found, It's a must");
                     // 清空整个 fields，当前页面就等于略过了
                     $fields = array();
                     break;
