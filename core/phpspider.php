@@ -2180,7 +2180,7 @@ class phpspider
                 if ($required) 
                 {
                     //add by yunsong 20181011
-                    $selector = $conf['selector_type']=='callback' ? 'callback':$conf['selector'];
+                    $selector = (isset($conf['selector_type']) && $conf['selector_type']=='callback') ? 'callback':$conf['selector'];
                     log::debug("Selector {$conf['name']}[{$selector}] not found, It's a must");
                     // 清空整个 fields，当前页面就等于略过了
                     $fields = array();
