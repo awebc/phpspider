@@ -589,7 +589,7 @@ class requests
      * @param mixed $proxies 
      * @static
      * @access public
-     * @return void
+     * @return mixed
      */
     public static function post($url, $fields = array(), $files = array(), $allow_redirects = true, $cert = NULL)
     {

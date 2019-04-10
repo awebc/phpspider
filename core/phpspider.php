@@ -2087,6 +2087,7 @@ class phpspider
             $repeated = isset($conf['repeated']) && $conf['repeated'] ? true : false;
             // 当前field抽取到的内容是否必须有值
             $required = isset($conf['required']) && $conf['required'] ? true : false;
+            $return_array = isset($conf['return_array']) && $conf['return_array'] ? true : false;
 
             if (empty($conf['name'])) 
             {
@@ -2200,7 +2201,13 @@ class phpspider
                     }
                     else 
                     {
-                        $fields[$conf['name']] = $values[0];
+                        if ($return_array){
+                            $fields[$conf['name']] = $values;
+
+                        }
+                        else{
+                            $fields[$conf['name']] = $values[0];
+                        }
                     }
                 }
                 else 
